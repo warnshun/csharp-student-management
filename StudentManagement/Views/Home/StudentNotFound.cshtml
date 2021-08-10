@@ -1,0 +1,18 @@
+﻿@model int
+
+@{
+ViewBag.Title = "404 錯誤 - 找不到內容";
+}
+
+<div class="alert alert-danger mt-1 mb-1">
+    <h4>404 Not Found 錯誤</h4>
+    <hr />
+    <h5>查不到學生ID = @Model</h5>
+</div>
+
+<a asp-action="Index" asp-controller="Home" 
+   class="btn btn-outline-success"
+   style="width: auto;"
+   >
+    點擊此處返回學生列表
+</a>

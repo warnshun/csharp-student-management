@@ -12,7 +12,10 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        //"ASPNETCORE_ENVIRONMENT": "Development",
+        //"ASPNETCORE_ENVIRONMENT": "Staging",
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "MyKey": "MyKey in launchSettings.json IIS Express"
       }
     },
     "StudentManagement": {

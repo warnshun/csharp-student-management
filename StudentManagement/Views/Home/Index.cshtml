@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Student>
+@{ 
+    ViewBag.Title = "學生列表頁面";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var student in Model)
+        {
+
+            var avatarPath = "/img/" + (student.AvatarPath ?? "avatar.gif");
+
+            <div class="card col-sm-2">
+                <div class="card-header">
+                    <h3>@student.Name ID：@student.Id</h3>
+                </div>
+                <img class="card-img-top images-thumbnail" src="@avatarPath" asp-append-version="true" />
+                <div class="card-footer text-center">
+
+                    <a asp-controller="home" asp-action="details" asp-route-id="@student.Id" class="btn btn-primary m-1">查看</a>
+
+                    <a asp-controller="home" asp-action="edit" asp-route-id="@student.Id" class="btn btn-primary m-1">編輯</a>
+
+                    <a asp-controller="home" asp-action="delete" asp-route-id="@student.Id" class="btn btn-danger m-1">刪除</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

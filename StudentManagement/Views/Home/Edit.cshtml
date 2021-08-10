@@ -1,0 +1,61 @@
+﻿@model StudentEditViewModel
+
+@{
+    ViewBag.Title = "編輯學生資料";
+    // 取得當前學生 "大頭貼" 路徑
+    var avatarPath = "/img/" + (Model.ExistingAvatarPath ?? "avatar.gif");
+}
+
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Edit" method="post" class="mt-3">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input hidden asp-for="Id" />
+    <input hidden asp-for="ExistingAvatarPath" />
+
+    <div class="input-group row">
+        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Name" class="form-control" placeholder="請輸入名字" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="input-group row">
+        <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" placeholder="請輸入E-mail" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="input-group row">
+        <label asp-for="ClassName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="ClassName" asp-items="Html.GetEnumSelectList<ClassNameEnum>()" class="form-select mr-sm-2">
+                <option value="">請選擇</option>
+            </select>
+            <span asp-validation-for="ClassName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="input-group row">
+        <label asp-for="Avatars" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input asp-for="Avatars" multiple class="form-control custom-file-input" />
+            </div>
+        </div>
+    </div>
+    <div class="input-group row col-sm-4 offset-4">
+        <img class="images-thumbnail" src="@avatarPath" asp-append-version="true" />
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button class="btn btn-primary" type="submit">更新</button>
+
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">取消</a>
+        </div>
+    </div>
+</form>

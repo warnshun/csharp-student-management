@@ -1,0 +1,33 @@
+﻿@model HomeDetailsViewModel
+
+@{
+    ViewBag.Title = "學生詳情頁面";
+    var avatarPath = "/img/" + (Model.Student.AvatarPath?? "avatar.gif");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Student.Name</h1>
+            </div>
+            <img class="card-img-top" src="@avatarPath" asp-append-version="true" />
+            <div class="card-body text-center">
+
+                <h4>學生 ID： @Model.Student.Id</h4>
+                <h4>E-mail： @Model.Student.Email</h4>
+                <h4>班級名稱： @Model.Student.ClassName</h4>
+            </div>
+
+            <div class="card-footer text-center">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1">返回</a>
+                <a href="#" class="btn btn-primary m-1">編輯</a>
+                <a href="#" class="btn btn-danger m-1">刪除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/CustomScript.js"></script>
+}
